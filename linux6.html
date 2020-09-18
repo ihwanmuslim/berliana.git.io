@@ -138,7 +138,7 @@
     
             <div class="s-content__media col-full">
                 <div class="s-content__post-thumb">
-                    <img src="images/thumbs/masonry/OSI.jpg" 
+                    <img src="images/thumbs/masonry/gns3_error_nat.png" 
                          sizes="(max-width: 2000px) 100vw, 2000px" alt="" >
                     
                 </div>
@@ -148,12 +148,10 @@
 
                 <p class="lead">Libvirt is collection of software that provides a convenient way to manage virtual machines and other virtualization functionality, such as storage and network interface management. These software pieces include a long term stable C API, a daemon (libvirtd), and a command line utility (virsh). A primary goal of libvirt is to provide a single way to manage multiple different virtualization providers/hypervisors, such as the KVM/QEMU, Xen, LXC, OpenVZ or VirtualBox hypervisors (among others).  </p>
                 <a href="https://wiki.archlinux.org/index.php/libvirt">Klik disini [Refensi Tambahan dari Wiki Arch: Libvirtd]</a>
-                <img src="images/thumbs/masonry/gns3_error_nat.png"
-                sizes="(max-width:200px) 100vw, 2000px" alt= "Arch Repository">
-                <p>Seperti pada pesan: "Error while creating node from template: NAT interface virbr0 is missing, please install libvirt." Dimana penulis juga mangalami pesan error pada saat akan menambahkan NAT ke workspace GNS3. Setelah penulis melakukan googling sampai pada masuk salah satu forum linux untuk problem solving, akhirnya bertemu menemukan masalahnya. Libvirt seperti yang dijelaskan sebagai penyedia pengelolaan virtual machines. Salah satu dari fiktur libvirt, Virtual NAT and Route based networking: Any host running the libvirt daemon can manage and create virtual networks. Libvirt virtual networks use firewall rules to act as a router, providing VMs transparent access to the host machines network. Simpel permasalahannya adalah karena depedency libvirt belum ter-install dan diperlukan konfigurasi lanjutan. Langsung saja langkah-langkahnya:</p>
                 <img src="images/thumbs/featured/GNS_NAT.jpg"
-                sizes="(max-width:200px) 100vw, 2000px" alt= "NAT Error">
-                <p class="lead">Pertama, lakukan peng-installan depedency libvirt dengan cara</p>
+                sizes="(max-width:200px) 100vw, 2000px" alt= "Arch Repository">
+                <p>Seperti pada pesan: "Error while creating node from template: NAT interface virbr0 is missing, please install libvirt." Dimana penulis juga mangalami pesan error pada saat akan menambahkan NAT ke workspace GNS3. Setelah penulis melakukan googling sampai pada salah satu forum linux untuk problem solving, akhirnya menemukan masalahnya. Libvirt seperti yang dijelaskan sebagai penyedia pengelolaan virtual machines. Salah satu dari fiktur libvirt, Virtual NAT and Route based networking: Any host running the libvirt daemon can manage and create virtual networks. Libvirt virtual networks use firewall rules to act as a router, providing VMs transparent access to the host machines network. Simpel permasalahannya adalah karena dependency libvirt belum ter-install dan diperlukan konfigurasi lanjutan. Langsung saja langkah-langkahnya:</p>
+                <p class="lead">Pertama, lakukan peng-installan dependency libvirt dengan cara</p>
                 <p>$ sudo pacman -S libvirt</p>
                 <p>$ systemctl enable libvirtd</p>
                 <p>$ systemctl start libvirtd</p>
@@ -165,7 +163,7 @@
                 <p class="lead">Kedua, dalam memanagement virtual machines, libvirt menyediakan virsh program.</p>
                 <p>$ sudo virsh net-define /tmp/network.xml</p>
                 <p>$ sudo virsh net-autostart default</p>
-                <p>Jika pada tahap ini terjadi medapat pesan seperti libvirt: “Failed to initialize a valid firewall backend” maka anda perlu install ebtables dan dnsmasq terlebih dahulu, </p> <a href="https://wiki.archlinux.org/index.php/libvirt">klik disini untuk cara install</a>
+                <p>Jika pada tahap ini medapat pesan seperti libvirt: “Failed to initialize a valid firewall backend” maka anda perlu install ebtables dan dnsmasq terlebih dahulu, <a href="https://wiki.archlinux.org/index.php/libvirt">klik disini untuk cara install</a></p> 
                 <p class="lead">Lakukan ulang tahap kedua, dan selesai. Semoga membantu :)</p>
                   
                 <p class="s-content__tags">
